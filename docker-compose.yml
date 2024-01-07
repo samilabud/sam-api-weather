@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  backend-weather-challenge-test-runner:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+
+    command: npm run test:watch
+
+    volumes:
+      - ./package.json:/opt/app/package.json
+      - ./package-lock.json:/opt/app/package-lock.json
+      - ./src:/opt/app/src
+      - ./test:/opt/app/test
