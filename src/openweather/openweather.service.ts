@@ -13,7 +13,7 @@ export class OpenweatherService {
   public async getCurrentWeather(lat: string, lon: string) {
     try {
       const request = await this.axioClient.get(
-        `weather?lat=${lat}&lon=${lon}&appid=de5c628cb3e798af337d6e9bd3273180`,
+        `weather?lat=${lat}&lon=${lon}&units=imperial&appid=de5c628cb3e798af337d6e9bd3273180`,
       )
       if (!request.data) {
         return null
