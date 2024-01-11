@@ -9,7 +9,6 @@ import { Request, Response, NextFunction } from 'express'
 export class ApiKeyMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction): void {
     const apiKey = req.headers['samapi-key']
-    console.log(req.headers)
 
     // Implement your API key validation logic here
     // Check if the provided API key is valid
