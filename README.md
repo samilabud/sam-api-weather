@@ -25,8 +25,7 @@ Behind the scenes, this endpoint will make use of two services to convert the lo
 - [Openstreetmap](https://nominatim.org/release-docs/develop/api/Search/)
   - `/search` - Returns a list of geocoded data in order of importance
 - [Weather.gov](https://www.weather.gov/documentation/services-web-api#/default/zone_list)
-  - `/points/{lat},{lon}` - Returns the point information (location + station information). We need the grid
-    information.
+  - `/points/{lat},{lon}` - Returns the point information (location + station information). We'll show the forecast.
   - `/gridpoints/{gridId}/{gridX),{gridY}/forecast` - Returns the forecast for the location
 
 ---

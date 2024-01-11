@@ -8,20 +8,36 @@ export class WeathergovService {
     this.axioClient = axios.create({ baseURL: 'https://api.weather.gov/' })
   }
   async getForecast(latitude: string, longitude: string) {
+    let periods: []
     const forecastURL = await this.getPoint(latitude, longitude)
-    const forecastData = await this.axioClient.get(forecastURL)
-    const periods = forecastData.data.properties.periods.map((p) => ({
-      name: p.name,
-      temperature: p.temperature.toString(),
-      windSpeed: p.windSpeed,
-      windDirection: p.windDirection,
-    }))
+    if (forecastURL) {
+      const forecastData = await this.axioClient.get(forecastURL)
+      console.log({ forecastData })
+      periods = forecastData.data.properties.periods.map((p) => ({
+        name: p.name,
+        temperature: p.temperature.toString(),
+        windSpeed: p.windSpeed,
+        windDirection: p.windDirection,
+      }))
+    } else {
+      periods = []
+    }
     const result = { periods }
     return result
   }
 
   private async getPoint(latitude: string, longitude: string) {
-    const request = await this.axioClient.get(`points/${latitude},${longitude}`)
-    return request.data.properties.forecast
+    try {
+      const request = await this.axioClient.get(
+        `points/${latitude},${longitude}`,
+      )
+
+      if (!request.data) {
+        return null
+      }
+      return request.data.properties.forecast
+    } catch (error) {
+      return null
+    }
   }
 }
