@@ -18,7 +18,7 @@ export class AppController {
 
   @HttpCode(200)
   @Get('weather')
-  async getWeather(
+  async getForecastWeather(
     @Query('location') location: string,
   ): Promise<WeatherForecastResponse> {
     if (!location) {

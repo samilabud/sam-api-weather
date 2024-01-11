@@ -12,7 +12,6 @@ export class WeathergovService {
     const forecastURL = await this.getPoint(latitude, longitude)
     if (forecastURL) {
       const forecastData = await this.axioClient.get(forecastURL)
-      console.log({ forecastData })
       periods = forecastData.data.properties.periods.map((p) => ({
         name: p.name,
         temperature: p.temperature.toString(),
