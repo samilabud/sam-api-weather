@@ -1,5 +1,7 @@
 export interface WeatherForecastResponse {
   periods: Array<WeatherPeriod>
+  latitude: string
+  longitude: string
 }
 
 export type WeatherPeriod = {

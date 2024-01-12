@@ -27,6 +27,8 @@ Behind the scenes, this endpoint will make use of two services to convert the lo
 - [Weather.gov](https://www.weather.gov/documentation/services-web-api#/default/zone_list)
   - `/points/{lat},{lon}` - Returns the point information (location + station information). We'll show the forecast.
   - `/gridpoints/{gridId}/{gridX),{gridY}/forecast` - Returns the forecast for the location
+- [Openweather](https://openweathermap.org/current)
+  - https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
 ---
 

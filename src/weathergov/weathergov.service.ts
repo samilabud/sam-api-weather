@@ -21,7 +21,7 @@ export class WeathergovService {
     } else {
       periods = []
     }
-    const result = { periods }
+    const result = { latitude, longitude, periods }
     return result
   }
 
