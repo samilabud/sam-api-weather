@@ -4,7 +4,9 @@ import { WeathergovService } from './weathergov/weathergov.service'
 import { OpenstreetmapService } from './openstreetmap/openstreetmap.service'
 import { OpenweatherService } from './openweather/openweather.service'
 import { ApiKeyMiddleware } from './api-key.middleware'
+import { ConfigModule } from '@nestjs/config'
 
+ConfigModule.forRoot()
 @Module({
   imports: [],
   controllers: [AppController],

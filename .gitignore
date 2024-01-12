@@ -4,3 +4,4 @@ dist/
 .idea_modules/
 *.iml
 .vscode/
+.env
