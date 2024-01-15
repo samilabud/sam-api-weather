@@ -17,6 +17,8 @@ export class WeathergovService {
         temperature: p.temperature.toString(),
         windSpeed: p.windSpeed,
         windDirection: p.windDirection,
+        icon: p.icon,
+        shortDescription: p.shortForecast,
       }))
     } else {
       periods = []

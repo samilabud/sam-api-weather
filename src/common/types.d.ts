@@ -9,6 +9,8 @@ export type WeatherPeriod = {
   temperature: string
   windSpeed: string
   windDirection: string
+  icon: string
+  shortDescription: string
 }
 
 export type GeoCoordinates = {
