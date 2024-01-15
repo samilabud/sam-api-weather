@@ -28,6 +28,7 @@ export type CurrentWeatherResponse = {
     {
       main: string
       description: string
+      icon: string
     },
   ]
 }
@@ -36,6 +37,7 @@ export interface OpenweatherResponse {
     {
       main: string
       description: string
+      icon: string
     },
   ]
   main: {
