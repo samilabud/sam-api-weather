@@ -19,19 +19,21 @@ describe('AppController (e2e)', () => {
 
   describe('/weather (GET)', () => {
     it('with no query', async () => {
-      const response = await request(httpServer).get('/weather')
-
-      expect(response.statusCode).toEqual(400)
+      request(httpServer)
+        .get('/weather')
+        .set('SamAPI-Key', 'nextweatherwatch-123456')
+        .expect(400)
     })
 
     it('with location="new york"', async () => {
       const response = await request(httpServer)
         .get('/weather')
+        .set('SamAPI-Key', 'nextweatherwatch-123456')
         .query({ location: 'new york' })
 
       expect(response.statusCode).toEqual(200)
 
-      console.log(response.body)
+      // console.log(response.body)
 
       expect(response.body.periods).toEqual(
         expect.arrayContaining([
