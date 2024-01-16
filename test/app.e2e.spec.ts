@@ -33,17 +33,21 @@ describe('AppController (e2e)', () => {
 
       expect(response.statusCode).toEqual(200)
 
-      // console.log(response.body)
-
-      expect(response.body.periods).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            name: expect.any(String),
-            temperature: expect.any(String),
-            windSpeed: expect.any(String),
-            windDirection: expect.any(String),
-          }),
-        ]),
+      expect(response.body).toEqual(
+        expect.objectContaining({
+          latitude: expect.any(String),
+          longitude: expect.any(String),
+          periods: expect.arrayContaining([
+            expect.objectContaining({
+              name: expect.any(String),
+              temperature: expect.any(String),
+              windSpeed: expect.any(String),
+              windDirection: expect.any(String),
+              icon: expect.any(String),
+              shortDescription: expect.any(String),
+            }),
+          ]),
+        }),
       )
     })
   })
