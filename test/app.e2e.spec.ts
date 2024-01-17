@@ -3,6 +3,9 @@ import { Test } from '@nestjs/testing'
 import { AppModule } from '../src/app.module'
 import { INestApplication } from '@nestjs/common'
 
+const HEADER_API_KEY = 'SamAPI-Key'
+const API_KEY = 'nextweatherwatch-123456'
+
 describe('AppController (e2e)', () => {
   let app: INestApplication
   let httpServer: any
@@ -21,14 +24,14 @@ describe('AppController (e2e)', () => {
     it('with no query', async () => {
       request(httpServer)
         .get('/weather')
-        .set('SamAPI-Key', 'nextweatherwatch-123456')
+        .set(HEADER_API_KEY, API_KEY)
         .expect(400)
     })
 
     it('with location="new york"', async () => {
       const response = await request(httpServer)
         .get('/weather')
-        .set('SamAPI-Key', 'nextweatherwatch-123456')
+        .set(HEADER_API_KEY, API_KEY)
         .query({ location: 'new york' })
 
       expect(response.statusCode).toEqual(200)
@@ -49,6 +52,15 @@ describe('AppController (e2e)', () => {
           ]),
         }),
       )
+    })
+  })
+
+  describe('/current-weather GET', () => {
+    it('without location', async () => {
+      return request(httpServer)
+        .get('/current-weather')
+        .set(HEADER_API_KEY, API_KEY)
+        .expect(400)
     })
   })
 
