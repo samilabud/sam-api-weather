@@ -2,6 +2,7 @@ import * as request from 'supertest'
 import { Test } from '@nestjs/testing'
 import { AppModule } from '../src/app.module'
 import { INestApplication } from '@nestjs/common'
+import exp from 'constants'
 
 const HEADER_API_KEY = 'SamAPI-Key'
 const API_KEY = 'nextweatherwatch-123456'
@@ -61,6 +62,33 @@ describe('AppController (e2e)', () => {
         .get('/current-weather')
         .set(HEADER_API_KEY, API_KEY)
         .expect(400)
+    })
+
+    it('with location=miami', async () => {
+      const response = await request(httpServer)
+        .get('/current-weather')
+        .set(HEADER_API_KEY, API_KEY)
+        .query({ location: 'miami' })
+      expect(response.statusCode).toEqual(200)
+      expect(response.body).toEqual(
+        expect.objectContaining({
+          feels_like: expect.any(Number),
+          humidity: expect.any(Number),
+          pressure: expect.any(Number),
+          temp: expect.any(Number),
+          temp_max: expect.any(Number),
+          temp_min: expect.any(Number),
+          visibility: expect.any(Number),
+          weather: expect.arrayContaining([
+            expect.objectContaining({
+              id: expect.any(Number),
+              main: expect.any(String),
+              description: expect.any(String),
+              icon: expect.any(String),
+            }),
+          ]),
+        }),
+      )
     })
   })
 
