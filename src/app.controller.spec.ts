@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing'
 import { AppController } from './app.controller'
 import { WeathergovService } from './weathergov/weathergov.service'
 import { OpenstreetmapService } from './openstreetmap/openstreetmap.service'
+import { OpenweatherService } from './openweather/openweather.service'
 
 describe('AppController', () => {
   let app: TestingModule
@@ -9,7 +10,7 @@ describe('AppController', () => {
   beforeAll(async () => {
     app = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [WeathergovService, OpenstreetmapService],
+      providers: [WeathergovService, OpenstreetmapService, OpenweatherService],
     }).compile()
   })
 
