@@ -20,6 +20,7 @@ export class OpenweatherService {
       }
       return request.data
     } catch (error) {
+      console.log('getCurrentWeather', error)
       return null
     }
   }

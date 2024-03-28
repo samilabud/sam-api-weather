@@ -34,10 +34,12 @@ export class WeathergovService {
       )
 
       if (!request.data) {
+        console.log('getPoint error: request not data found')
         return null
       }
       return request.data.properties.forecast
     } catch (error) {
+      console.log('getPoint', error)
       return null
     }
   }

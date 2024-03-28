@@ -2,7 +2,6 @@ import * as request from 'supertest'
 import { Test } from '@nestjs/testing'
 import { AppModule } from '../src/app.module'
 import { INestApplication } from '@nestjs/common'
-import exp from 'constants'
 
 const HEADER_API_KEY = 'SamAPI-Key'
 const API_KEY = 'nextweatherwatch-123456'
