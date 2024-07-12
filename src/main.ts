@@ -23,6 +23,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document)
 
   app.enableCors()
+  console.log('Server is running on http://localhost:8000')
   await app.listen(8000)
 }
 bootstrap()

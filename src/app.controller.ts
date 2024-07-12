@@ -30,7 +30,6 @@ export class AppController {
     if (!location) {
       throw new BadRequestException()
     }
-    console.log('passed')
     const { latitude, longitude } =
       await this.openStreetMapService.getCoordinates(location)
     const response: WeatherForecastResponse =
